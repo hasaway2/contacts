@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>form submit과 ajax 비교 - 동작하는 예제 아님</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      // 버튼을 form을 submit한다? 검증 후 전송
+      $(document).ready(function() {
+        $('#mvc').on('click', function(e) {
+          e.preventDefault();
+          const username = $('#username').val();
+          const pwd = $('#pwd').val();
+          if(username=='' || pwd=='') {
+            alert('필수입력입니다');
+            return
+          }
+          $('#f1').submit();
+        });
+
+        $('#rest').on('click', function(e) {
+          // 이동을 끄고 검증하는 코드는 mvc건 rest건 한다
+          e.preventDefault();
+          const username = $('#username').val();
+          const pwd = $('#pwd').val();
+          if(username=='' || pwd=='') {
+            alert('필수입력입니다');
+            return
+          }
+          const params = {
+            username:$('#username').val(),
+            pwd:$('#pwd').val()
+          };
+          $.ajax({
+            url:'xxx',
+            method:'post',
+            data:params,
+            success:function() {
+            }
+          })
+
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <form id="f1" action="xxx" method="post">
+      <input type="text" id="username" name="username">
+      <input type="password" id="pwd" name="pwd">
+      <button id="mvc">mvc로 보내기</button>
+      <button id="rest">rest로 보내기</button>
+    </form>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        $('#add').on("click", function(e) {
+          // 버튼이나 a와 2가지 동작을 가지는 요소의 두번째 동작(이동)
+          // 을 막는다
+          e.preventDefault();
+
+          const title = $('#title').val();
+          if(title=='') {
+            alert('제목을 입력하세요');
+            // return을 해도 form은 submit이 된다
+            return;
+          }
+
+          $(어쩌구).submit();
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <form action="서버주소" method="post" enctype="multipart/form-data">  
+      <input type="text" name="title" id="title">
+      <button id="add"></button>
+    </form>
+  </body>
+</html>
